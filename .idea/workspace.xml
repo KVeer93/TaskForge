@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="83cfb49a-6ae1-4ec6-bcf6-563d11ad47e5" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/taskforge-api/HELP.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/taskforge-api/mvnw.cmd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/taskforge-api/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/taskforge-api/src/main/java/com/taskforge/api/TaskforgeApiApplication.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/taskforge-api/src/main/java/com/taskforge/api/controller/HealthController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/taskforge-api/src/main/resources/application.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/taskforge-api/src/test/java/com/taskforge/api/TaskforgeApiApplicationTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/problems.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/problems.md" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 0,
+  &quot;fromUser&quot;: false
+}</component>
+  <component name="ProjectId" id="3Egqjhc7K77AS08VXhiJ8sSPo28" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "codeWithMe.voiceChat.enabledByDefault": "false",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/Users/k_veer/Desktop/TaskForge",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "advanced.settings"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/taskforge-api" />
+    </key>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-30f59d01ecdd-37e91769500f-intellij.indexing.shared.core-IU-261.25134.95" />
+        <option value="bundled-js-predefined-d6986cc7102b-31caf2ab9e3c-JavaScript-IU-261.25134.95" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="83cfb49a-6ae1-4ec6-bcf6-563d11ad47e5" name="Changes" comment="" />
+      <created>1780610697223</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1780610697223</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>
