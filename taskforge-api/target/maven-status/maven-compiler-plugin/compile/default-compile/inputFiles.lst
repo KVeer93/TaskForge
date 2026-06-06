@@ -1,2 +1,8 @@
 /Users/k_veer/Desktop/TaskForge/taskforge-api/src/main/java/com/taskforge/api/TaskforgeApiApplication.java
 /Users/k_veer/Desktop/TaskForge/taskforge-api/src/main/java/com/taskforge/api/controller/HealthController.java
+/Users/k_veer/Desktop/TaskForge/taskforge-api/src/main/java/com/taskforge/api/controller/TaskController.java
+/Users/k_veer/Desktop/TaskForge/taskforge-api/src/main/java/com/taskforge/api/dto/CreateTaskRequest.java
+/Users/k_veer/Desktop/TaskForge/taskforge-api/src/main/java/com/taskforge/api/entity/Task.java
+/Users/k_veer/Desktop/TaskForge/taskforge-api/src/main/java/com/taskforge/api/entity/TaskStatus.java
+/Users/k_veer/Desktop/TaskForge/taskforge-api/src/main/java/com/taskforge/api/repository/TaskRepository.java
+/Users/k_veer/Desktop/TaskForge/taskforge-api/src/main/java/com/taskforge/api/service/TaskService.java

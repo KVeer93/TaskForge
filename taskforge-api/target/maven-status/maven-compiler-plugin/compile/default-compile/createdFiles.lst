@@ -1,2 +1,8 @@
+com/taskforge/api/controller/TaskController.class
+com/taskforge/api/dto/CreateTaskRequest.class
 com/taskforge/api/controller/HealthController.class
 com/taskforge/api/TaskforgeApiApplication.class
+com/taskforge/api/repository/TaskRepository.class
+com/taskforge/api/entity/TaskStatus.class
+com/taskforge/api/service/TaskService.class
+com/taskforge/api/entity/Task.class

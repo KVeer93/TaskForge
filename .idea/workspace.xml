@@ -1,15 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="83cfb49a-6ae1-4ec6-bcf6-563d11ad47e5" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/taskforge-api/HELP.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/taskforge-api/mvnw.cmd" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/taskforge-api/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/taskforge-api/src/main/java/com/taskforge/api/TaskforgeApiApplication.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/taskforge-api/src/main/java/com/taskforge/api/controller/HealthController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/taskforge-api/src/main/resources/application.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/taskforge-api/src/test/java/com/taskforge/api/TaskforgeApiApplicationTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/problems.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/problems.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/learning.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/taskforge-api/src/main/java/com/taskforge/api/entity/Task.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/taskforge-api/src/main/java/com/taskforge/api/entity/TaskStatus.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/taskforge-api/src/main/java/com/taskforge/api/repository/TaskRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/taskforge-api/src/main/java/com/taskforge/api/controller/TaskController.java" beforeDir="false" afterPath="$PROJECT_DIR$/taskforge-api/src/main/java/com/taskforge/api/controller/TaskController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/taskforge-api/src/main/java/com/taskforge/api/dto/CreateTaskRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/taskforge-api/src/main/java/com/taskforge/api/dto/CreateTaskRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/taskforge-api/src/main/java/com/taskforge/api/service/TaskService.java" beforeDir="false" afterPath="$PROJECT_DIR$/taskforge-api/src/main/java/com/taskforge/api/service/TaskService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/taskforge-api/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/taskforge-api/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/taskforge-api/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/taskforge-api/target/classes/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/taskforge-api/target/classes/com/taskforge/api/controller/TaskController.class" beforeDir="false" afterPath="$PROJECT_DIR$/taskforge-api/target/classes/com/taskforge/api/controller/TaskController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/taskforge-api/target/classes/com/taskforge/api/dto/CreateTaskRequest.class" beforeDir="false" afterPath="$PROJECT_DIR$/taskforge-api/target/classes/com/taskforge/api/dto/CreateTaskRequest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/taskforge-api/target/classes/com/taskforge/api/service/TaskService.class" beforeDir="false" afterPath="$PROJECT_DIR$/taskforge-api/target/classes/com/taskforge/api/service/TaskService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/taskforge-api/target/maven-archiver/pom.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/taskforge-api/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/taskforge-api/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/taskforge-api/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/taskforge-api/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/taskforge-api/target/surefire-reports/TEST-com.taskforge.api.TaskforgeApiApplicationTests.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/taskforge-api/target/surefire-reports/com.taskforge.api.TaskforgeApiApplicationTests.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/taskforge-api/target/taskforge-api-0.0.1-SNAPSHOT.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/taskforge-api/target/taskforge-api-0.0.1-SNAPSHOT.jar.original" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -18,6 +33,65 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="NextEditCompletionFeaturesState">
+    <decayedCancelled>
+      <entry key="MS100" value="1.000000074406299" />
+      <entry key="MS500" value="1.0376813600200279" />
+      <entry key="S2" value="1.6060941122878232" />
+      <entry key="S5" value="2.6738550152403326" />
+      <entry key="S10" value="4.032076436346394" />
+      <entry key="S30" value="7.551295694249514" />
+      <entry key="S60" value="10.81222476223941" />
+      <entry key="M2" value="13.908135807671258" />
+      <entry key="M5" value="16.644000589263772" />
+      <entry key="M10" value="17.760430401455263" />
+      <entry key="M15" value="18.164992759549545" />
+      <entry key="M30" value="18.706475624575383" />
+      <entry key="H1" value="19.41915620539364" />
+      <entry key="H2" value="20.272035475044643" />
+      <entry key="H4" value="21.00928372691286" />
+      <entry key="D1" value="23.560026392503836" />
+      <entry key="W1" value="25.527583628509667" />
+    </decayedCancelled>
+    <decayedSelected>
+      <entry key="MS100" value="0.0" />
+      <entry key="MS500" value="0.0" />
+      <entry key="S2" value="0.0" />
+      <entry key="S5" value="0.0" />
+      <entry key="S10" value="0.0" />
+      <entry key="S30" value="0.0" />
+      <entry key="S60" value="0.0" />
+      <entry key="M2" value="0.0" />
+      <entry key="M5" value="0.0" />
+      <entry key="M10" value="0.0" />
+      <entry key="M15" value="0.0" />
+      <entry key="M30" value="0.0" />
+      <entry key="H1" value="0.0" />
+      <entry key="H2" value="0.0" />
+      <entry key="H4" value="0.0" />
+      <entry key="D1" value="0.0" />
+      <entry key="W1" value="0.0" />
+    </decayedSelected>
+    <decayedShown>
+      <entry key="MS100" value="0.9526380669879255" />
+      <entry key="MS500" value="1.0274535677772967" />
+      <entry key="S2" value="1.6012958382649638" />
+      <entry key="S5" value="2.670214152219193" />
+      <entry key="S10" value="4.029166456322009" />
+      <entry key="S30" value="7.549452694403677" />
+      <entry key="S60" value="10.810926658187514" />
+      <entry key="M2" value="13.907309240303446" />
+      <entry key="M5" value="16.643606937780522" />
+      <entry key="M10" value="17.760220660834065" />
+      <entry key="M15" value="18.16484979403234" />
+      <entry key="M30" value="18.706401901972256" />
+      <entry key="H1" value="19.419117680795882" />
+      <entry key="H2" value="20.272015175923002" />
+      <entry key="H4" value="21.009273128148084" />
+      <entry key="D1" value="23.56002440615103" />
+      <entry key="W1" value="25.527583322158982" />
+    </decayedShown>
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 0,
@@ -39,6 +113,10 @@
     "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "/Users/k_veer/Desktop/TaskForge",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "settings.editor.selected.configurable": "advanced.settings"
   }

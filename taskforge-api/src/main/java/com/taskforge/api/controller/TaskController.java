@@ -1,9 +1,10 @@
 package com.taskforge.api.controller;
 
-import org.springframework.scheduling.config.Task;
+import com.taskforge.api.entity.Task;
 import org.springframework.web.bind.annotation.*;
 import com.taskforge.api.service.TaskService;
 import com.taskforge.api.dto.CreateTaskRequest;
+import java.util.List;
 
 
 @RestController
@@ -16,7 +17,13 @@ public class TaskController {
     }
 
     @PostMapping
-    public String createTask(@RequestBody CreateTaskRequest request){
+    public Task createTask(@RequestBody CreateTaskRequest request){
         return taskService.createTask(request);
+
+    }
+    
+    @GetMapping
+    public List<Task> getAllTasks(){
+        return taskService.getAllTasks();
     }
 }
