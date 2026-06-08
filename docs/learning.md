@@ -281,3 +281,15 @@ POST /tasks
 
 JSON arrives  ->  dispatcherControl -> Controller -> DTO(through @requestBody)
 -> Service -> repositry > ORM > hibernate -> Database row created
+
+## How does a task move:
+
+QUEUED
+
+↓
+
+PROCESSING
+
+↓
+
+COMPLETED

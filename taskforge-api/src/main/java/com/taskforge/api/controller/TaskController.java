@@ -21,9 +21,20 @@ public class TaskController {
         return taskService.createTask(request);
 
     }
-    
+
     @GetMapping
     public List<Task> getAllTasks(){
         return taskService.getAllTasks();
     }
+
+    @GetMapping("/next")
+    public Task getNextTask(){
+        return taskService.getNextTask().orElse(null);
+    }
+
+    @PutMapping("/{id}/complete")
+    public Task completeTask(@PathVariable Long id){
+        return taskService.completeTask(id);
+    }
+
 }

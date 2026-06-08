@@ -9,6 +9,8 @@ import com.taskforge.api.entity.Task;
 import com.taskforge.api.entity.TaskStatus;
 import com.taskforge.api.repository.TaskRepository;
 import java.util.List;
+import java.time.LocalDateTime;
+import java.util.Optional;
 
 
 @Service
@@ -34,4 +36,30 @@ public class TaskService {
     public List<Task> getAllTasks(){
         return repository.findAll();
     }
+
+    public Optional<Task> getNextTask(){
+        Optional<Task> taskOptional = repository.findFirstByStatusOrderByPriorityDesc(TaskStatus.QUEUED);
+
+        if(taskOptional.isEmpty()){
+            return Optional.empty();
+        }
+
+        Task task = taskOptional.get();
+
+        task.setStatus(TaskStatus.PROCESSING);
+        task.setStartedAt(LocalDateTime.now());
+
+        repository.save(task);
+
+        return Optional.of(task);
+    }
+
+    public Task completeTask(Long id){
+        Task task = repository.findById(id).orElseThrow();
+        task.setStatus(TaskStatus.COMPLETED);
+        task.setFinishedAt(LocalDateTime.now());
+
+        return repository.save(task);
+    }
+
 }
