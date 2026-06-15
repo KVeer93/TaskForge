@@ -8,8 +8,9 @@ import com.taskforge.api.dto.CreateTaskRequest;
 import com.taskforge.api.entity.Task;
 import com.taskforge.api.entity.TaskStatus;
 import com.taskforge.api.repository.TaskRepository;
+import org.springframework.transaction.annotation.Transactional;
+
 import java.util.List;
-import java.time.LocalDateTime;
 import java.util.Optional;
 
 
@@ -37,7 +38,8 @@ public class TaskService {
         return repository.findAll();
     }
 
-    public Optional<Task> getNextTask(){
+    @Transactional
+    public Optional<Task> getNextTask(String workerId){
         Optional<Task> taskOptional = repository.findFirstByStatusOrderByPriorityDesc(TaskStatus.QUEUED);
 
         if(taskOptional.isEmpty()){
@@ -49,6 +51,7 @@ public class TaskService {
         task.setStatus(TaskStatus.PROCESSING);
         task.setStartedAt(LocalDateTime.now());
 
+        task.setAssignedWorker(workerId);
         repository.save(task);
 
         return Optional.of(task);
@@ -60,6 +63,10 @@ public class TaskService {
         task.setFinishedAt(LocalDateTime.now());
 
         return repository.save(task);
+    }
+
+    public void deleteAllTasks() {
+        repository.deleteAll();
     }
 
 }

@@ -5,80 +5,95 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="83cfb49a-6ae1-4ec6-bcf6-563d11ad47e5" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/taskforge-worker/src/main/java/com/taskforge/worker/config/RestConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/taskforge-worker/src/main/java/com/taskforge/worker/dto/TaskResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/taskforge-worker/src/main/java/com/taskforge/worker/service/WorkerService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/decisions.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/decisions.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/docs/learning.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/learning.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/problems.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/problems.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/taskforge-api/src/main/java/com/taskforge/api/controller/TaskController.java" beforeDir="false" afterPath="$PROJECT_DIR$/taskforge-api/src/main/java/com/taskforge/api/controller/TaskController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/taskforge-api/src/main/java/com/taskforge/api/entity/Task.java" beforeDir="false" afterPath="$PROJECT_DIR$/taskforge-api/src/main/java/com/taskforge/api/entity/Task.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/taskforge-api/src/main/java/com/taskforge/api/repository/TaskRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/taskforge-api/src/main/java/com/taskforge/api/repository/TaskRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/taskforge-api/src/main/java/com/taskforge/api/service/TaskService.java" beforeDir="false" afterPath="$PROJECT_DIR$/taskforge-api/src/main/java/com/taskforge/api/service/TaskService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/taskforge-api/target/classes/com/taskforge/api/controller/TaskController.class" beforeDir="false" afterPath="$PROJECT_DIR$/taskforge-api/target/classes/com/taskforge/api/controller/TaskController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/taskforge-api/target/classes/com/taskforge/api/entity/Task.class" beforeDir="false" afterPath="$PROJECT_DIR$/taskforge-api/target/classes/com/taskforge/api/entity/Task.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/taskforge-api/target/classes/com/taskforge/api/repository/TaskRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/taskforge-api/target/classes/com/taskforge/api/repository/TaskRepository.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/taskforge-api/target/classes/com/taskforge/api/service/TaskService.class" beforeDir="false" afterPath="$PROJECT_DIR$/taskforge-api/target/classes/com/taskforge/api/service/TaskService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/taskforge-worker/.gitkeep" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="EmbeddingIndexingInfo">
+    <option name="cachedIndexableFilesCount" value="80" />
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="McpProjectServerCommands">
+    <commands />
+    <urls />
+  </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.8471460913418127" />
-      <entry key="MS500" value="4.4178051643754" />
-      <entry key="S2" value="8.341568722584064" />
-      <entry key="S5" value="11.289965738452771" />
-      <entry key="S10" value="12.900840659666951" />
-      <entry key="S30" value="15.250866897896541" />
-      <entry key="S60" value="18.58137021186438" />
-      <entry key="M2" value="23.234086925817714" />
-      <entry key="M5" value="28.54519138687671" />
-      <entry key="M10" value="31.029196414859666" />
-      <entry key="M15" value="31.966020339001247" />
-      <entry key="M30" value="33.07944590176098" />
-      <entry key="H1" value="34.0912950931288" />
-      <entry key="H2" value="35.10035338473598" />
-      <entry key="H4" value="35.92020001269396" />
-      <entry key="D1" value="38.5433821081772" />
-      <entry key="W1" value="40.52500989024394" />
+      <entry key="MS100" value="1.8682772173999158" />
+      <entry key="MS500" value="3.7715608354222825" />
+      <entry key="S2" value="4.638430490443488" />
+      <entry key="S5" value="4.855129335857731" />
+      <entry key="S10" value="5.093191460352465" />
+      <entry key="S30" value="6.862480886467873" />
+      <entry key="S60" value="8.591055217414834" />
+      <entry key="M2" value="10.161791294377526" />
+      <entry key="M5" value="11.619900042072333" />
+      <entry key="M10" value="12.255954805202132" />
+      <entry key="M15" value="12.490676054147908" />
+      <entry key="M30" value="12.738327714582233" />
+      <entry key="H1" value="12.867338995752586" />
+      <entry key="H2" value="12.933203863919976" />
+      <entry key="H4" value="12.96648432488678" />
+      <entry key="D1" value="13.519938242774417" />
+      <entry key="W1" value="45.84116098994323" />
     </decayedCancelled>
     <decayedSelected>
       <entry key="MS100" value="0.0" />
-      <entry key="MS500" value="0.0" />
-      <entry key="S2" value="0.0" />
-      <entry key="S5" value="0.0" />
-      <entry key="S10" value="0.0" />
-      <entry key="S30" value="0.0" />
-      <entry key="S60" value="0.0" />
-      <entry key="M2" value="0.0" />
-      <entry key="M5" value="0.0" />
-      <entry key="M10" value="0.0" />
-      <entry key="M15" value="0.0" />
-      <entry key="M30" value="0.0" />
-      <entry key="H1" value="0.0" />
-      <entry key="H2" value="0.0" />
-      <entry key="H4" value="0.0" />
-      <entry key="D1" value="0.0" />
-      <entry key="W1" value="0.0" />
+      <entry key="MS500" value="1.3258583145147544E-154" />
+      <entry key="S2" value="3.3933157986907124E-39" />
+      <entry key="S5" value="4.0949604503410036E-16" />
+      <entry key="S10" value="2.0236008624086417E-8" />
+      <entry key="S30" value="0.0027250529911008797" />
+      <entry key="S60" value="0.05220204010477829" />
+      <entry key="M2" value="0.228477657780314" />
+      <entry key="M5" value="0.5540353750026378" />
+      <entry key="M10" value="0.7443355258232924" />
+      <entry key="M15" value="0.8213201889601481" />
+      <entry key="M30" value="0.9062671730566813" />
+      <entry key="H1" value="0.9519806579215152" />
+      <entry key="H2" value="0.9756949615128259" />
+      <entry key="H4" value="0.9877727276619988" />
+      <entry key="D1" value="0.9979516606450954" />
+      <entry key="W1" value="0.9997071228867201" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="1.7809395608662244" />
-      <entry key="MS500" value="4.366293068001302" />
-      <entry key="S2" value="8.312612969231102" />
-      <entry key="S5" value="11.272518751495202" />
-      <entry key="S10" value="12.890446567770615" />
-      <entry key="S30" value="15.246685040122014" />
-      <entry key="S60" value="18.578860158440396" />
-      <entry key="M2" value="23.232552109392998" />
-      <entry key="M5" value="28.54445146410882" />
-      <entry key="M10" value="31.028797102597437" />
-      <entry key="M15" value="31.965746746088694" />
-      <entry key="M30" value="33.07930459185651" />
-      <entry key="H1" value="34.09122218304003" />
-      <entry key="H2" value="35.100315737905184" />
-      <entry key="H4" value="35.92018069865351" />
-      <entry key="D1" value="38.54337866313685" />
-      <entry key="W1" value="40.52500937533842" />
+      <entry key="MS100" value="1.7912690915514153" />
+      <entry key="MS500" value="3.741462935264333" />
+      <entry key="S2" value="4.629132722367537" />
+      <entry key="S5" value="4.851226430877762" />
+      <entry key="S10" value="5.091043855468688" />
+      <entry key="S30" value="6.86117634684066" />
+      <entry key="S60" value="8.636014346341366" />
+      <entry key="M2" value="10.382215890442236" />
+      <entry key="M5" value="12.16836560479615" />
+      <entry key="M10" value="12.996904213043031" />
+      <entry key="M15" value="13.309583241941315" />
+      <entry key="M30" value="13.643304256966134" />
+      <entry key="H1" value="13.818652028799638" />
+      <entry key="H2" value="13.908559267676894" />
+      <entry key="H4" value="13.954085815807225" />
+      <entry key="D1" value="14.517861123082087" />
+      <entry key="W1" value="46.84086359990539" />
     </decayedShown>
   </component>
   <component name="ProjectColorInfo">{
@@ -93,6 +108,7 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.MCP Project settings loaded": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
@@ -111,6 +127,7 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/taskforge-worker/src/main/java/com/taskforge/worker" />
       <recent name="$PROJECT_DIR$/taskforge-api" />
     </key>
   </component>

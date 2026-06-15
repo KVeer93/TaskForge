@@ -15,6 +15,7 @@ public class Task {
 
     private String title;
     private String type;
+    private String assignedWorker;
 
     @Enumerated(EnumType.STRING)
     private TaskStatus status;
@@ -27,6 +28,14 @@ public class Task {
 
     public Task() {
 
+    }
+
+    public String getAssignedWorker() {
+        return assignedWorker;
+    }
+
+    public void setAssignedWorker(String assignedWorker) {
+        this.assignedWorker = assignedWorker;
     }
 
     public Long getId() {

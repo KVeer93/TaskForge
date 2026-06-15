@@ -1,57 +1,312 @@
-# Engineering Decisions
+# TaskForge - Architecture Decisions
 
-## Decision 1: Separate API and Worker
+This document contains important design decisions taken while building TaskForge.
 
-Initially, it might seem easier to execute tasks directly inside the API server.
+---
 
-I decided not to do this.
+# Decision 1: Build Multiple Services Instead Of Single Application
+
+## Decision
+
+Separate:
+
+- API Service
+- Worker Service
+
+
+Architecture:
+
+```
+Client
+
+ |
+
+API
+
+ |
+
+Database
+
+
+Workers
+```
+
+## Reason
+
+API should handle requests quickly.
+
+Heavy processing should happen asynchronously.
+
+---
+
+# Decision 2: API Owns The Database
+
+## Options
+
+Option A:
+
+```
+Worker
+
+ |
+
+Database
+```
+
+
+Option B:
+
+```
+Worker
+
+ |
+
+API
+
+ |
+
+Database
+```
+
+
+Chosen:
+
+Option B.
+
+
+## Reason
+
+Centralized business logic.
+
+Only API changes task states.
+
+Avoids duplicated rules.
+
+---
+
+# Decision 3: Use PostgreSQL As Initial Queue
+
+## Decision
+
+Store tasks in database:
+
+```
+tasks table
+```
+
+with:
+
+- status
+- priority
+- timestamps
+
+## Reason
+
+Start simple before adding queue systems.
+
+Later:
+
+Database queue can evolve into Redis/Kafka.
+
+---
+
+# Decision 4: Task Lifecycle
+
+Current lifecycle:
+
+```
+QUEUED
+
+   |
+
+PROCESSING
+
+   |
+
+COMPLETED / FAILED
+```
+
 
 Reason:
 
-The API server should handle user communication.
+Need to track execution state clearly.
 
-Workers should handle heavy processing.
+---
 
-This allows both parts of the system to scale independently.
+# Decision 5: Store Task Metadata
 
-## Decision 2: Starting with PostgreSQL instead of Redis
+Task contains:
 
-Many production systems use dedicated queue technologies.
+```
+id
 
-However, TaskForge starts with PostgreSQL.
+title
+
+type
+
+status
+
+priority
+
+createdAt
+
+startedAt
+
+finishedAt
+
+errorMessage
+```
+
 
 Reason:
 
-I want to experience the limitations first.
+Needed for:
 
-Problems I expect:
+- debugging
+- scheduling
+- retries
+- monitoring
 
-* inefficient polling
-* worker conflicts
-* concurrency issues
+---
 
-After understanding these problems, Redis will be introduced.
+# Decision 6: Use Pull Based Workers
 
-## Decision 3: Worker Count
+Chosen:
 
-One task does not mean one worker.
+```
+Worker asks API for work
+```
 
-Workers are limited resources.
 
-A small number of workers should process a large number of queued tasks.
+Instead of:
+
+```
+API pushes work to Worker
+```
+
+
+## Reason
+
+Easier scaling.
+
+Workers can join and leave independently.
+
+No worker discovery needed.
+
+---
+
+# Decision 7: Workers Do Not Expose APIs Initially
+
+Worker does not need:
+
+```
+localhost:8081
+```
+
+
+Reason:
+
+Nobody communicates directly with worker.
+
+Worker communicates outward.
+
+---
+
+# Decision 8: Use DTOs Between Services
 
 Example:
 
-10 workers can process thousands of tasks by continuously consuming from the queue.
+API sends:
 
-## Decision 4: Scheduling Strategy
+```
+TaskResponse
+```
 
-Initial version:
 
-First Come First Serve.
+Worker receives DTO.
 
-Later versions:
+Reason:
 
-Priority based scheduling can be introduced.
+Avoid exposing database entities everywhere.
 
-Higher priority tasks will execute before lower priority tasks.
+---
+
+# Decision 9: Prepare For Worker Failure
+
+Future additions:
+
+Tasks will contain:
+
+```
+assignedWorker
+
+heartbeat
+
+retryCount
+
+timeout
+```
+
+
+Reason:
+
+Distributed systems fail.
+
+Failure must be expected.
+
+---
+
+# Decision 10: Idempotent Execution
+
+Future addition:
+
+Tasks will contain:
+
+```
+idempotencyKey
+```
+
+
+Reason:
+
+Retries should not accidentally execute dangerous actions multiple times.
+
+---
+
+# Overall Architecture Goal
+
+TaskForge should evolve from:
+
+Simple:
+
+```
+API
+
+Database
+
+Worker
+```
+
+
+Into:
+
+Distributed:
+
+```
+             API
+
+              |
+
+            Queue
+
+              |
+
+     Worker Worker Worker
+
+
+Monitoring
+
+Retries
+
+Scaling
+```

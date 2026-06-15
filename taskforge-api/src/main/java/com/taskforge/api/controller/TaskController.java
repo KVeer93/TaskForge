@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.*;
 import com.taskforge.api.service.TaskService;
 import com.taskforge.api.dto.CreateTaskRequest;
 import java.util.List;
+import java.util.Optional;
 
 
 @RestController
@@ -28,13 +29,19 @@ public class TaskController {
     }
 
     @GetMapping("/next")
-    public Task getNextTask(){
-        return taskService.getNextTask().orElse(null);
+    public Optional<Task> getNextTask(@RequestParam String workerId){
+        return taskService.getNextTask(workerId);
     }
 
     @PutMapping("/{id}/complete")
     public Task completeTask(@PathVariable Long id){
         return taskService.completeTask(id);
+    }
+
+    @DeleteMapping
+    public String deleteAllTasks() {
+        taskService.deleteAllTasks();
+        return "All tasks deleted";
     }
 
 }
