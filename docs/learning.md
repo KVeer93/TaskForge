@@ -1926,3 +1926,487 @@ automatically created a new database column because:
 spring.jpa.hibernate.ddl-auto=update
 
 Hibernate compares Java entities with database tables and updates the schema.
+
+# Day 6 - Learning (TaskForge)
+
+## Overview
+
+Today's session was less about writing code and more about understanding how two independent applications communicate with each other.
+
+Until now, I was only thinking about writing APIs. Today, I started thinking about how distributed systems are designed, how workers identify themselves, and how Spring Boot creates and injects objects automatically.
+
+---
+
+# 1. Worker Registration
+
+A worker should register itself with the API when it starts.
+
+Flow:
+
+```
+Worker Starts
+      │
+      ▼
+POST /workers/register
+      │
+      ▼
+API checks database
+      │
+ ┌────┴────┐
+ │         │
+No        Yes
+ │         │
+Create    Update
+Worker    Worker
+ │         │
+ └────┬────┘
+      ▼
+Registration Successful
+      │
+      ▼
+Worker starts polling for tasks
+```
+
+The worker always registers first.
+
+The API decides whether it is a new worker or an existing one.
+
+---
+
+# 2. Idempotent Registration
+
+Calling the registration endpoint multiple times should not create duplicate workers.
+
+Instead,
+
+* If the worker does not exist → Create it.
+* If the worker already exists → Update its status and last heartbeat.
+
+This makes the registration endpoint idempotent.
+
+---
+
+# 3. DTOs Exist Independently
+
+Both projects contain a RegisterWorkerRequest class.
+
+```
+taskforge-api
+    RegisterWorkerRequest
+
+taskforge-worker
+    RegisterWorkerRequest
+```
+
+Although they have the same fields, they are completely different Java classes.
+
+Reason:
+
+The API and Worker are two different applications.
+
+They never exchange Java objects.
+
+They exchange JSON over HTTP.
+
+Flow:
+
+```
+Worker Java Object
+
+↓
+
+JSON
+
+↓
+
+HTTP Request
+
+↓
+
+JSON
+
+↓
+
+API Java Object
+```
+
+---
+
+# 4. RestTemplate.postForObject()
+
+Example:
+
+```java
+restTemplate.postForObject(
+    "http://localhost:8080/workers/register",
+    request,
+    Void.class
+);
+```
+
+Meaning of each parameter:
+
+1. URL
+
+```
+"http://localhost:8080/workers/register"
+```
+
+Destination of the POST request.
+
+---
+
+2. Request Object
+
+```
+request
+```
+
+Spring automatically converts this Java object into JSON.
+
+Example:
+
+```java
+request.setWorkerId("worker-1");
+```
+
+becomes
+
+```json
+{
+    "workerId":"worker-1"
+}
+```
+
+---
+
+3. Response Type
+
+```
+Void.class
+```
+
+Tells Spring:
+
+"I don't care about the response body."
+
+If the API returned a Worker object, then I would use
+
+```java
+WorkerResponse.class
+```
+
+instead.
+
+---
+
+# 5. Why the Worker Has Its Own DTO
+
+The Worker should never import Java classes from the API project.
+
+The Worker only knows:
+
+* URL
+* HTTP Method
+* JSON Format
+
+This keeps both applications independent.
+
+---
+
+# 6. Dependency Injection Revisited
+
+Today I finally understood what Spring is actually doing.
+
+Instead of writing
+
+```java
+RestTemplate restTemplate = new RestTemplate();
+```
+
+Spring creates the object for me.
+
+Then injects it into my service.
+
+```java
+private final RestTemplate restTemplate;
+
+public WorkerService(RestTemplate restTemplate){
+    this.restTemplate = restTemplate;
+}
+```
+
+Spring creates the RestTemplate object.
+
+Spring creates WorkerService.
+
+Spring passes the RestTemplate into the constructor.
+
+This is Constructor Dependency Injection.
+
+---
+
+# 7. Constructor Injection
+
+Instead of
+
+```java
+new WorkerService(new RestTemplate());
+```
+
+Spring internally does something similar to
+
+```java
+RestTemplate rt = new RestTemplate();
+
+WorkerService ws =
+    new WorkerService(rt);
+```
+
+This is why I never call new WorkerService() myself.
+
+Spring creates all the objects.
+
+---
+
+# 8. Bean
+
+A Bean is simply an object whose lifecycle is managed by Spring.
+
+Instead of creating objects manually,
+
+Spring creates them,
+
+stores them,
+
+and injects them wherever required.
+
+---
+
+# 9. Spring Annotations Cheat Sheet
+
+## @SpringBootApplication
+
+Marks the main application.
+
+Starts Spring Boot.
+
+Performs component scanning.
+
+Enables auto configuration.
+
+Usually placed on the main class.
+
+---
+
+## @RestController
+
+Marks a class as a REST API Controller.
+
+Methods return JSON instead of HTML.
+
+---
+
+## @RequestMapping
+
+Defines the base URL.
+
+Example
+
+```
+@RequestMapping("/tasks")
+```
+
+All methods inside begin with
+
+```
+/tasks
+```
+
+---
+
+## @GetMapping
+
+Handles HTTP GET requests.
+
+Used for fetching data.
+
+---
+
+## @PostMapping
+
+Handles HTTP POST requests.
+
+Used for creating resources.
+
+---
+
+## @PutMapping
+
+Handles HTTP PUT requests.
+
+Used for updating resources.
+
+---
+
+## @DeleteMapping
+
+Handles HTTP DELETE requests.
+
+Used for deleting resources.
+
+---
+
+## @RequestBody
+
+Reads JSON from the HTTP request body.
+
+Spring automatically converts JSON into a Java object.
+
+---
+
+## @RequestParam
+
+Reads data from URL query parameters.
+
+Example
+
+```
+/tasks?id=5
+```
+
+---
+
+## @PathVariable
+
+Reads values from the URL path.
+
+Example
+
+```
+/tasks/15
+```
+
+Here,
+
+```
+15
+```
+
+is the Path Variable.
+
+---
+
+## @Service
+
+Marks a class as the Business Logic Layer.
+
+Usually contains the actual implementation.
+
+---
+
+## @Repository
+
+Marks a Repository class.
+
+Responsible for database interaction.
+
+Spring automatically creates its implementation.
+
+---
+
+## @Entity
+
+Marks a Java class as a Database Table.
+
+---
+
+## @Id
+
+Marks the Primary Key.
+
+---
+
+## @GeneratedValue
+
+Automatically generates the Primary Key.
+
+Usually used with auto-increment IDs.
+
+---
+
+## @Transactional
+
+Executes the method inside a database transaction.
+
+Either everything succeeds,
+
+or everything rolls back.
+
+Useful when multiple database operations must happen together.
+
+---
+
+## @Lock
+
+Applies database locking while reading data.
+
+Useful for preventing two workers from picking the same task simultaneously.
+
+---
+
+## @Value
+
+Injects values from configuration.
+
+Example
+
+```java
+@Value("${worker.id}")
+private String workerId;
+```
+
+Spring looks for
+
+```
+worker.id
+```
+
+and assigns it to the variable.
+
+---
+
+## @Bean
+
+Tells Spring to create and manage an object.
+
+Example:
+
+```java
+@Bean
+public RestTemplate restTemplate(){
+    return new RestTemplate();
+}
+```
+
+Spring creates one RestTemplate object and reuses it everywhere.
+
+---
+
+# Key Takeaways
+
+* Two applications communicate through JSON, not Java objects.
+* DTOs belong to the application that owns them.
+* Registration should be idempotent.
+* Spring creates and injects objects automatically.
+* Constructor Injection is cleaner than creating objects manually.
+* Beans are simply objects managed by Spring.
+* Dependency Injection is becoming much clearer after today's implementation.
+
+---
+
+**Progress Reflection**
+
+Today's coding was relatively small, but the architectural understanding increased significantly.
+
+The project is slowly moving from a CRUD application to a real distributed system where different services communicate over HTTP while remaining independent.

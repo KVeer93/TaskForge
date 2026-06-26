@@ -1,5 +1,6 @@
 package com.taskforge.worker.service;
 
+import com.taskforge.worker.dto.RegisterWorkerRequest;
 import com.taskforge.worker.dto.TaskResponse;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
@@ -16,8 +17,17 @@ public class WorkerService implements CommandLineRunner {
         this.restTemplate = restTemplate;
     }
 
+    private void registerWorker(){
+        RegisterWorkerRequest request = new RegisterWorkerRequest();
+        request.setWorkerId(workerId);
+
+        restTemplate.postForObject("http://localhost:8080/workers/register", request, Void.class);
+    }
+
     @Override
     public void run(String... args) throws Exception {
+
+        registerWorker();
 
         while(true){
             System.out.println("Checking for tasks...");
